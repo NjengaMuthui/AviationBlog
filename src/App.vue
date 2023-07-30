@@ -1,24 +1,21 @@
-<script>
+<script setup>
 import { RouterLink, RouterView } from "vue-router";
-export default {
-  data() {
-    return {
-      open: false,
-      opacity: 1,
-      side: false
-    };
-  },
-  methods: {
-    searchClick() {
-      this.open = !this.open;
-      this.opacity = 0.0;
-      setTimeout(() => {
-        this.opacity = 1;
-        this.$refs.search_input.focus();
-      }, 300);
-    }
-  }
-};
+import { ref } from "vue";
+
+const open = ref(false);
+const opacity = ref(1);
+const side = ref(true);
+const search_input = ref(null);
+
+function searchClick() {
+  open.value = !open.value;
+  opacity.value = 0.0;
+
+  setTimeout(() => {
+    opacity.value = 1;
+    search_input.value.focus();
+  }, 300);
+}
 </script>
 
 <template>
@@ -30,8 +27,12 @@ export default {
           <li class="menu-item">
             <RouterLink class="rounded-gradient" to="/">Home</RouterLink>
           </li>
-          <li class="menu-item"><a href="#" class="link">Blog</a></li>
-          <li class="menu-item"><a href="#" class="link">Shop</a></li>
+          <li class="menu-item">
+            <RouterLink to="/blog" class="link">Blog</RouterLink>
+          </li>
+          <li class="menu-item">
+            <RouterLink to="/shop" class="link">Shop</RouterLink>
+          </li>
           <li class="menu-item"><a href="#" class="link">Contact us</a></li>
         </ul>
       </div>
@@ -104,7 +105,6 @@ export default {
 
 <style scoped>
 .body-footer {
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -151,11 +151,11 @@ export default {
   background: var(--vt-c-black);
   opacity: 0.8;
   z-index: 3;
-  position: absolute;
+  position: fixed;
 }
 .side-panel {
   width: 300px;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 4;
@@ -218,6 +218,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 2;
+  background: var(--color-background-transparent);
 }
 .header {
   font-size: x-large;

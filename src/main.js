@@ -4,10 +4,12 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faComments } from "@fortawesome/free-regular-svg-icons";
 import {
   faMagnifyingGlass,
   faBarsStaggered,
-  faXmark
+  faXmark,
+  faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -23,7 +25,9 @@ library.add(
   faTwitter,
   faMagnifyingGlass,
   faBarsStaggered,
-  faXmark
+  faXmark,
+  faChevronRight,
+  faComments
 );
 
 import App from "./App.vue";
