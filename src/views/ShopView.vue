@@ -1,6 +1,10 @@
 <template>
   <div class="page">
-    <ShopItem v-for="product in store.products" :Product="product" />
+    <ShopItem
+      v-for="(product, index) in store.products"
+      :Product="product"
+      :pos="index"
+    />
   </div>
 </template>
 
@@ -16,5 +20,7 @@ const store = useProductsStore();
   width: 80%;
   margin: 62px auto 0 auto;
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 </style>

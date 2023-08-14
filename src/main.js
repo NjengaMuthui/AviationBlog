@@ -9,7 +9,11 @@ import {
   faMagnifyingGlass,
   faBarsStaggered,
   faXmark,
-  faChevronRight
+  faChevronRight,
+  faCartPlus,
+  faPlus,
+  faMinus,
+  faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -27,7 +31,11 @@ library.add(
   faBarsStaggered,
   faXmark,
   faChevronRight,
-  faComments
+  faComments,
+  faCartPlus,
+  faPlus,
+  faMinus,
+  faChevronLeft
 );
 
 import App from "./App.vue";

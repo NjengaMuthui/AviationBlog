@@ -32,10 +32,6 @@
   --genz-color-gradient-2: rgba(11, 209, 209, 1);
   --section-height: calc(100vh - 62px);
   --title-text-size: 24px;
-}
-
-/* semantic color variables for this project */
-:root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -52,22 +48,7 @@
   --close-color: #d90429;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-    --color-background-transparent: var(--vt-c-black-transparent);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-    --color-link: var(--vt-c-grey);
-    --color-link-hover: var(--vt-c-white);
-  }
-}
+/* semantic color variables for this project */
 
 *,
 *::before,
