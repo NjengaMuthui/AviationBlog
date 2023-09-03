@@ -12,10 +12,11 @@
             class="comment-input"
             type="text"
             placeholder="Add Your Comment here"
+            v-model="comment_value"
           />
           <div class="comment-control">
             <button @click="showComment = false" class="control">Cancel</button>
-            <button class="control">Submit</button>
+            <button @click="addComment" class="control">Submit</button>
           </div>
         </div>
       </div>
@@ -35,6 +36,17 @@ const props = defineProps({
   CommentOBJ: Object
 });
 const showComment = ref(false);
+const comment_value = ref("");
+function addComment() {
+  props.CommentOBJ.replys.unshift({
+    img: "/src/assets/assistant.jpg",
+    username: "@Current User",
+    details: comment_value.value,
+    time: Date.now()
+  });
+  comment_value.value = "";
+  showComment.value = false;
+}
 </script>
 
 <style scoped>

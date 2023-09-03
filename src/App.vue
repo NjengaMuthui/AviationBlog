@@ -1,11 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { ref } from "vue";
+import { useProductsStore } from "./stores/products";
+import router from "./router";
 
 const open = ref(false);
 const opacity = ref(1);
 const side = ref(true);
 const search_input = ref(null);
+const show_items = ref(false);
+const store = useProductsStore();
 
 function searchClick() {
   open.value = !open.value;
@@ -15,6 +19,11 @@ function searchClick() {
     opacity.value = 1;
     search_input.value.focus();
   }, 300);
+}
+function openCart() {
+  router.push({
+    name: "Cart"
+  });
 }
 </script>
 
@@ -33,7 +42,9 @@ function searchClick() {
           <li class="menu-item">
             <RouterLink to="/shop" class="link">Shop</RouterLink>
           </li>
-          <li class="menu-item"><a href="#" class="link">Contact us</a></li>
+          <li class="menu-item">
+            <RouterLink to="/contacts" class="link">Contact us</RouterLink>
+          </li>
         </ul>
       </div>
 
@@ -70,7 +81,7 @@ function searchClick() {
             />
             <button
               @click="searchClick"
-              class="search-btn rounded-gradient"
+              class="search-btn"
               :class="{ active: open }"
               :style="{ opacity: opacity }"
             >
@@ -78,8 +89,14 @@ function searchClick() {
               <FontAwesomeIcon v-else icon="fa-solid fa-magnifying-glass" />
             </button>
           </div>
+          <button @click="openCart" class="items_cart">
+            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+            <div v-show="store.cartItems.length > 0" class="items_num">
+              {{ store.cartItems.length }}
+            </div>
+          </button>
 
-          <button class="rounded-gradient" @click="side = !side">
+          <button @click="side = !side">
             <FontAwesomeIcon icon="fa-solid fa-bars-staggered" />
           </button>
         </div>
@@ -104,6 +121,20 @@ function searchClick() {
 </template>
 
 <style scoped>
+.items_num {
+  position: absolute;
+  top: 0px;
+  right: -2px;
+  background: var(--genz-color-brand-1);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+.items_cart {
+  position: relative;
+}
 .body-footer {
   display: flex;
   flex-direction: column;
@@ -189,6 +220,8 @@ function searchClick() {
   width: var(--round-button-size);
   height: var(--round-button-size);
   font-size: 18px;
+  background: transparent;
+  cursor: pointer;
 }
 .search-btn {
   position: absolute;
@@ -218,7 +251,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 2;
-  background: var(--color-background-transparent);
+  background: white;
 }
 .header {
   font-size: x-large;

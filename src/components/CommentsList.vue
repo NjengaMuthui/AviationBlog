@@ -10,17 +10,19 @@
           class="comment-input"
           type="text"
           placeholder="Add Your Comment here"
+          v-model="commment_details"
+          :onFocus="(comment_active = true)"
         />
-        <div class="comment-control">
-          <button class="control">Cancel</button>
-          <button class="control">Submit</button>
+        <div v-show="comment_active" class="comment-control">
+          <button @click="closeComment" class="control">Cancel</button>
+          <button @click="addComment" class="control">Submit</button>
         </div>
       </div>
     </div>
-    <div class="comments-list">
+    <div v-if="store.comments.length > 0" class="comments-list">
       <CommentsView v-for="comment in store.comments" :CommentOBJ="comment" />
     </div>
-    <div class="placeholder">
+    <div v-else class="placeholder">
       <p class="placeholder-text">There are no comments to view</p>
     </div>
   </div>
@@ -29,12 +31,31 @@
 <script setup>
 import { commentsStore } from "../stores/comments";
 import CommentsView from "./CommentsView.vue";
+import { ref } from "vue";
 
 const props = defineProps({
   title: String
 });
 
 const store = commentsStore();
+const commment_details = ref("");
+const comment_active = ref(false);
+
+function addComment() {
+  store.comments.unshift({
+    img: "/src/assets/dante.jpg",
+    username: "@Current User",
+    details: commment_details.value,
+    time: Date.now(),
+    replys: []
+  });
+
+  commment_details.value = "";
+}
+function closeComment() {
+  commment_details.value = "";
+  comment_active.value = false;
+}
 </script>
 
 <style scoped>
@@ -91,5 +112,8 @@ const store = commentsStore();
 }
 .control:hover {
   background: #d5dcf9;
+}
+.placeholder {
+  margin: 20px 0;
 }
 </style>

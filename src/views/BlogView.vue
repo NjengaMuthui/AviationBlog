@@ -4,7 +4,11 @@
       <h1 class="blog-page-title">BLOG</h1>
     </div>
     <div class="blogs-list">
-      <BlogItem v-for="blog in store.blogs" :Blog="blog" />
+      <BlogItem
+        v-for="(blog, index) in store.blogs"
+        :Blog="blog"
+        :pos="index"
+      />
     </div>
   </div>
 </template>

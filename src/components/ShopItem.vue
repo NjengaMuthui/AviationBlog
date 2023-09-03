@@ -1,7 +1,7 @@
 <template>
   <div class="shop-item">
     <div class="img-container">
-      <div class="top-container">
+      <div @click="addCart" class="top-container">
         <h4>ADD TO CART</h4>
         <FontAwesomeIcon icon="fa-solid fa-cart-plus" />
       </div>
@@ -21,6 +21,7 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed } from "vue";
 import router from "../router";
+import { useProductsStore } from "../stores/products";
 
 const props = defineProps({
   Product: Object,
@@ -38,6 +39,11 @@ function viewDetails() {
       position
     }
   });
+}
+const store = useProductsStore();
+
+function addCart() {
+  store.addToCart(props.Product);
 }
 </script>
 

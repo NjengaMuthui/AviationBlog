@@ -32,7 +32,7 @@
   --genz-color-gradient-2: rgba(11, 209, 209, 1);
   --section-height: calc(100vh - 62px);
   --title-text-size: 24px;
-  --color-background: var(--vt-c-white);
+  --color-background: #ebebd3;
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
   --color-background-transparent: var(--vt-c-white-transparent);

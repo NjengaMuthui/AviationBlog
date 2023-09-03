@@ -13,7 +13,10 @@ import {
   faCartPlus,
   faPlus,
   faMinus,
-  faChevronLeft
+  faChevronLeft,
+  faHeart,
+  faShare,
+  faCartShopping
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -35,7 +38,10 @@ library.add(
   faCartPlus,
   faPlus,
   faMinus,
-  faChevronLeft
+  faChevronLeft,
+  faHeart,
+  faShare,
+  faCartShopping
 );
 
 import App from "./App.vue";

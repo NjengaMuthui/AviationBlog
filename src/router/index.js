@@ -10,8 +10,13 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: "/contacts",
+      name: "contacts",
+      component: () => import("../views/ContactView.vue")
+    },
+    {
       path: "/blog",
-      name: "about",
+      name: "blog",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -27,6 +32,17 @@ const router = createRouter({
       name: "product",
       props: true,
       component: () => import("../views/ShopDetailsView.vue")
+    },
+    {
+      path: "/blogdetail/:position/:title",
+      name: "blogdetail",
+      props: true,
+      component: () => import("../views/BlogDetailView.vue")
+    },
+    {
+      path: "/Cart",
+      name: "Cart",
+      component: () => import("../views/CartView.vue")
     }
   ]
 });
